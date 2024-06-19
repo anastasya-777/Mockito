@@ -7,9 +7,8 @@ import org.junit.jupiter.api.Test;
 public class MovieManagerTest {
 
     MovieManager manager1 = new MovieManager(10);
-
-
     MovieManager manager = new MovieManager();
+    
     PosterMovies movie1 = new PosterMovies(1,"Бладшот","Боевик");
     PosterMovies movie2 = new PosterMovies(2,"Вперед","Мультфильм");
     PosterMovies movie3 = new PosterMovies(3,"Отель Белград","Комедия");
@@ -24,8 +23,6 @@ public class MovieManagerTest {
 
     @BeforeEach
     public  void setup() {                   //метод добавления фильмов
-
-
         manager.save(movie1);
         manager.save(movie2);
         manager.save(movie3);
