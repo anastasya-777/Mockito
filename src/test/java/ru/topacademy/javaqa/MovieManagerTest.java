@@ -71,7 +71,10 @@ public class MovieManagerTest {
         Assertions.assertArrayEquals(new PosterMovies[]{movie}, returned);
     }
 
-
-
-
+    @Test
+    public void shouldReturnCorrectLimit() {
+        int limit = 5;
+        MovieManager manager = new MovieManager(limit);
+        Assertions.assertEquals(limit, manager.getLimit());
+    }
 }
