@@ -74,4 +74,143 @@ public class MovieManagerTest {
         MovieManager manager = new MovieManager(limit);
         Assertions.assertEquals(limit, manager.getLimit());
     }
+
+    @Test
+    public void shouldReturnLastMoviesWithinLimit() {
+
+        MovieManager manager = new MovieManager(5);
+        manager.save(movie1);
+        manager.save(movie2);
+        manager.save(movie3);
+        manager.save(movie4);
+        manager.save(movie5);
+        manager.save(movie6);
+        manager.save(movie7);
+        manager.save(movie8);
+        manager.save(movie9);
+        manager.save(movie10);
+
+        PosterMovies[] expected = {movie10, movie9, movie8, movie7, movie6};
+        PosterMovies[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldHandleEmptyMovieList() {
+        // Проверяет, что метод findAll() корректно работает,когда список фильмов пуст, и возвращает пустой массив.
+        MovieManager manager = new MovieManager();
+        PosterMovies[] expected = {};
+        PosterMovies[] actual = manager.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldHandleEmptyMovieListForFindLast() {
+        // Этот тест проверяет,что метод findLast() корректно работает,когда список фильмов пуст,и возвращает пустой массив.
+        MovieManager manager = new MovieManager();
+        PosterMovies[] expected = {};
+        PosterMovies[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldHandleLessMoviesThanLimit() {
+        // Проверяет,что метод findLast() возвращает массив фильмов в обратном порядке,но не более лимита,даже если фильмов меньше,чем лимит.
+        MovieManager manager = new MovieManager(10);
+        manager.save(movie1);
+        manager.save(movie2);
+        manager.save(movie3);
+
+        PosterMovies[] expected = {movie3, movie2, movie1};
+        PosterMovies[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotChangeMoviesOrderAfterFindLast() {
+        // Проверяет, что вызов метода findLast() не изменяет порядок фильмов в исходном списке, который возвращается методом findAll().
+        MovieManager manager = new MovieManager();
+        manager.save(movie1);
+        manager.save(movie2);
+        manager.save(movie3);
+        manager.save(movie4);
+        manager.save(movie5);
+        manager.save(movie6);
+        manager.save(movie7);
+        manager.save(movie8);
+        manager.save(movie9);
+        manager.save(movie10);
+
+        manager.findLast();
+
+        PosterMovies[] expected = {movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10};
+        PosterMovies[] actual = manager.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+
+    @Test
+    public void shouldReturnCorrectMovieId() {
+        // Этот тест проверяет, что геттер getMovieId() возвращает корректный идентификатор фильма.
+        PosterMovies movie = new PosterMovies(1, "Бладшот", "Боевик");
+        int expected = 1;
+        int actual = movie.getMovieId();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetMovieIdCorrectly() {
+        // Этот тест проверяет, что сеттер setMovieId() корректно устанавливает идентификатор фильма.
+        PosterMovies movie = new PosterMovies(1,"Бладшот","Боевик");
+        movie.setMovieId(1);
+        int movieId = movie.getMovieId();
+
+        Assertions.assertEquals(1, movieId);
+    }
+
+    @Test
+    public void shouldReturnCorrectMovieName() {
+        // Этот тест проверяет, что геттер getMovieName() возвращает корректное название фильма.
+        PosterMovies movie = new PosterMovies(2, "Вперед", "Мультфильм");
+        String expected = "Вперед";
+        String actual = movie.getMovieName();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetMovieNameCorrectly() {
+        // Этот тест проверяет, что сеттер setMovieName() корректно устанавливает название фильма.
+        PosterMovies movie = new PosterMovies(2,"Вперед","Мультфильм");
+        movie.setMovieName("Вперед");
+        String movieName = movie.getMovieName();
+
+        Assertions.assertEquals("Вперед", movieName);
+    }
+
+    @Test
+    public void shouldReturnCorrectGenre() {
+        // Этот тест проверяет, что геттер getGenre() возвращает корректный жанр фильма.
+        PosterMovies movie = new PosterMovies(3, "Отель Белград", "Комедия");
+        String expected = "Комедия";
+        String actual = movie.getGenre();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetGenreCorrectly() {
+        // Этот тест проверяет, что сеттер setGenre() корректно устанавливает жанр фильма.
+        PosterMovies movie = new PosterMovies(3,"Отель Белград","Комедия");
+        movie.setGenre("Комедия");
+        String genre = movie.getGenre();
+
+        Assertions.assertEquals("Комедия", genre);
+    }
 }
