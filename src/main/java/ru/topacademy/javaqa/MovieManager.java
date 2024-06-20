@@ -32,7 +32,7 @@ public class MovieManager {
     }
 
 
-    public PosterMovies[] findLast() {
+   public PosterMovies[] findLast() {
         // Вычисляем правильный размер результирующего массива
         int resultLength = Math.min(movies.length, limit);
         PosterMovies[] result = new PosterMovies[resultLength];
@@ -40,13 +40,6 @@ public class MovieManager {
         // Заполняем массив последними фильмами в обратном порядке
         for (int i = 0; i < resultLength; i++) {
             result[i] = movies[movies.length - 1 - i];
-        }
-        return result;
-    }
-
-        for (int i = 0; i < resultLenght; i++) {
-            result[i] = findAll()[resultLenght - 1 - i]; // инверсия массива
-
         }
         return result;
     }
