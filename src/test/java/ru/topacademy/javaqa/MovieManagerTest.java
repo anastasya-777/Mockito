@@ -70,10 +70,13 @@ public class MovieManagerTest {
 
     @Test
     public void shouldReturnCorrectLimit() {
-        int limit = 5;
-        MovieManager manager = new MovieManager(limit);
-        Assertions.assertEquals(limit, manager.getLimit());
-    }
+    int expected = 5;
+    MovieManager manager = new MovieManager(expected);
+    int actual = manager.getLimit();
+
+    Assertions.assertEquals(expected, actual);
+}
+
 
     @Test
     public void shouldReturnLastMoviesWithinLimit() {
