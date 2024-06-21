@@ -59,6 +59,7 @@ public class MovieManagerTest {
     }
 
     @Test
+    
     public void shouldSaveMoviesCorrectly() {
         MovieManager manager = new MovieManager();
         PosterMovies movie = new PosterMovies(1, "Бладшот", "Боевик");
@@ -69,16 +70,19 @@ public class MovieManagerTest {
     }
 
     @Test
+    
     public void shouldReturnCorrectLimit() {
-    int expected = 5;
-    MovieManager manager = new MovieManager(expected);
-    int actual = manager.getLimit();
+        int limit = 5;
+        MovieManager manager = new MovieManager(limit);
 
-    Assertions.assertEquals(expected, actual);
-}
+        int expected = 5;
+        int actual = manager.getLimit();
 
+        Assertions.assertEquals(limit, manager.getLimit());
+    }
 
     @Test
+    
     public void shouldReturnLastMoviesWithinLimit() {
 
         MovieManager manager = new MovieManager(5);
@@ -100,6 +104,7 @@ public class MovieManagerTest {
     }
 
     @Test
+    
     public void shouldHandleEmptyMovieList() {
         // Проверяет, что метод findAll() корректно работает,когда список фильмов пуст, и возвращает пустой массив.
         MovieManager manager = new MovieManager();
@@ -110,6 +115,7 @@ public class MovieManagerTest {
     }
 
     @Test
+    
     public void shouldHandleEmptyMovieListForFindLast() {
         // Этот тест проверяет,что метод findLast() корректно работает,когда список фильмов пуст,и возвращает пустой массив.
         MovieManager manager = new MovieManager();
@@ -120,6 +126,7 @@ public class MovieManagerTest {
     }
 
     @Test
+    
     public void shouldHandleLessMoviesThanLimit() {
         // Проверяет,что метод findLast() возвращает массив фильмов в обратном порядке,но не более лимита,даже если фильмов меньше,чем лимит.
         MovieManager manager = new MovieManager(10);
@@ -134,6 +141,7 @@ public class MovieManagerTest {
     }
 
     @Test
+    
     public void shouldNotChangeMoviesOrderAfterFindLast() {
         // Проверяет, что вызов метода findLast() не изменяет порядок фильмов в исходном списке, который возвращается методом findAll().
         MovieManager manager = new MovieManager();
@@ -158,6 +166,7 @@ public class MovieManagerTest {
 
 
     @Test
+    
     public void shouldReturnCorrectMovieId() {
         // Этот тест проверяет, что геттер getMovieId() возвращает корректный идентификатор фильма.
         PosterMovies movie = new PosterMovies(1, "Бладшот", "Боевик");
@@ -168,6 +177,7 @@ public class MovieManagerTest {
     }
 
     @Test
+    
     public void shouldSetMovieIdCorrectly() {
         // Этот тест проверяет, что сеттер setMovieId() корректно устанавливает идентификатор фильма.
         PosterMovies movie = new PosterMovies(1,"Бладшот","Боевик");
@@ -178,6 +188,7 @@ public class MovieManagerTest {
     }
 
     @Test
+    
     public void shouldReturnCorrectMovieName() {
         // Этот тест проверяет, что геттер getMovieName() возвращает корректное название фильма.
         PosterMovies movie = new PosterMovies(2, "Вперед", "Мультфильм");
@@ -188,6 +199,7 @@ public class MovieManagerTest {
     }
 
     @Test
+    
     public void shouldSetMovieNameCorrectly() {
         // Этот тест проверяет, что сеттер setMovieName() корректно устанавливает название фильма.
         PosterMovies movie = new PosterMovies(2,"Вперед","Мультфильм");
@@ -198,6 +210,7 @@ public class MovieManagerTest {
     }
 
     @Test
+    
     public void shouldReturnCorrectGenre() {
         // Этот тест проверяет, что геттер getGenre() возвращает корректный жанр фильма.
         PosterMovies movie = new PosterMovies(3, "Отель Белград", "Комедия");
@@ -208,6 +221,7 @@ public class MovieManagerTest {
     }
 
     @Test
+    
     public void shouldSetGenreCorrectly() {
         // Этот тест проверяет, что сеттер setGenre() корректно устанавливает жанр фильма.
         PosterMovies movie = new PosterMovies(3,"Отель Белград","Комедия");
