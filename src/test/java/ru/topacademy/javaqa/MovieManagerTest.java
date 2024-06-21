@@ -78,7 +78,7 @@ public class MovieManagerTest {
         int expected = 5;
         int actual = manager.getLimit();
 
-        Assertions.assertEquals(limit, manager.getLimit());
+         Assertions.assertEquals(expected, actual);
     }
 
     @Test
